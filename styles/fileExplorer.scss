@@ -1,0 +1,27 @@
+.fileExplorer{
+    table{
+        width: 90%;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin: 5em auto;
+        border-radius: 5px ;
+        tr{
+            td{
+                padding: 1em;
+            }
+        }
+        tr:hover{
+            cursor: pointer;
+            background-color: #999;
+        }
+        thead{
+            background-color: var(--color-primary-light);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            color: #fff;
+        }
+        .impaire{
+            background-color: #ccc;
+        }
+    }
+}

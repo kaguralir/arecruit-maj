@@ -1,0 +1,104 @@
+.Home{
+  max-height: 100vh;
+  overflow-y: scroll;
+
+  .container{
+    min-height: 100vh;
+    height: 100%;
+    .head{
+      height: 400px;
+      width: 100%;
+      .background{
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-image: url("/images/home.jpg");
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        filter: blur(0px);
+        height: 400px;
+        width: 100%;
+      }
+      .head-head{
+        position: relative;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.384);
+        height: 400px;
+        width: 100%;
+        flex-direction: column;
+        a{
+          color: #fff;
+        }
+        .head-txt{
+          height: 100%;
+          justify-content: center;
+        }
+        .lead{
+          font-family:"Open sans", Helvetica, Arial; font-size:2em; margin-bottom:6px; color:white; line-height:1.15em; 
+          margin-bottom: 1em;
+        }
+        .redirect{
+          display: flex;
+          flex-wrap: wrap;
+          div{
+            background-color: var(--color-primary-light);
+            padding: 0.5em;
+            font-weight: bold;
+            margin: 1em;
+            border-radius: 5px;
+            min-width: 300px;
+            cursor: pointer;
+          }
+        }
+      }
+      .wave{
+        position: absolute;
+        top:350px;
+        width: 100%;
+        transform: rotate(0deg);
+       
+      }    
+    }
+    .bigTitle{
+      font-family: "Open sans", Helvetica, Arial;
+      font-weight: 300;
+      font-size: 22px;
+      max-width: 50%;
+      color: #333;
+      width: 100%;
+      text-align: center;
+      margin: 2em auto;
+    }
+    .smallTitle{
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 14px;
+      margin: 0em auto;
+      color: #888;
+      max-width: 50%;
+    }
+
+    .steps{
+      width: 100%;
+      min-height: 300px;
+      background-color: #F7F5F4;
+      padding-top: 10px;
+      padding-bottom: 30px;
+      margin-top: 5em;
+      margin-bottom: 0;
+ 
+      .steps-steps{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        .step{
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+        }
+
+      }
+    }
+  }
+}

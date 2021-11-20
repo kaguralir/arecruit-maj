@@ -1,0 +1,226 @@
+.members-profile{
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    overflow-y: scroll;
+    .body{
+        min-height: 100vh;
+        .head{
+            .top{
+
+                width: 100%; 
+                background-image: url("/images/top.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: fit-content;
+                .wave{
+                    position: relative;
+                    top:5px;
+                    width: 100%;
+                    transform: rotate(0deg);
+                   
+                }         
+                .info{
+                    margin: 0 auto;
+                    width: max-content;
+                    max-width: 100%;
+                    padding-top: 0.5em;
+                    padding: 2em;
+                    height: 200px;
+                    color: #fff;
+                
+                    .item{
+                        font-weight: bold;
+                        font-size: 1.5em;
+                    }
+                    .profile-image-container{
+                        position: relative;
+                        top: 6vw;
+                        left: 45vw;
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                        z-index: 2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: max-content;
+                        border: 5px solid #fff;
+                        padding: 3px;
+                        border-radius: 100px;
+                        margin-right: 2em;
+                        background-color: #ccc;
+                        @media screen and (max-width:850px){
+                        }
+                        img{
+                            border-radius: 100px;
+                        }
+                    }
+                    .post{
+                        font-weight: initial;
+                        font-style: italic;
+                        font-weight: bold;
+                        font-size: 1em;
+                        color: #fff;
+                    }
+    
+    
+                   
+                }
+            }
+        }
+        .bottom{    
+            color: #555;
+            width: 90%;
+            .profil-info{
+                padding: 1em;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                @media screen and (max-width:850px){
+                    flex-direction: column;
+                }
+                .profil-info-item{
+                    width: 50%;
+                    @media screen and (max-width:850px){
+                        width: 100%;
+                        margin-bottom: 1em;
+                    }
+                }
+                .icon_info,.icon_presentation{
+                    background-repeat: no-repeat;
+                    background-position:initial;
+                    background-size: 30px;
+                    padding-left: 30px;
+                    padding-top: 35px;
+                }
+                .icon_info{
+                    background-image: url("/images/icon_info.svg");
+
+                }
+                .icon_presentation{
+                    background-image: url("/images/icon_presentation.svg");
+
+                }
+            }
+        }
+        .btn{
+            background-color: var(--color-primary-light);
+            border-radius: 30px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @media screen and (max-width:850px){
+                margin-top: 3em;
+            }
+        }
+    }
+
+}
+
+.profil-input{
+    background-color: rgba(0, 0, 255, 0.158);
+    border: none;
+    outline: 1px solid blueviolet;
+    color: #fff;
+    height: 30px;
+    width: max-content;
+    color: var(--color-primary-light);
+    margin-right: 1em;
+}
+.profil-input::placeholder{
+    color: #fff;
+    padding: 2px;
+  
+}
+.profil-input-2,.profil-input-2-long{
+    margin-bottom: 2px;
+    margin-right: 2px;
+    border: 1px solid #999;
+    padding: 5px;
+    white-space: nowrap;
+    min-width: fit-content;
+    color: var(--color-primary-light);
+}
+.profil-input-2-long{
+    min-width: fit-content;
+    width: 100%;
+}
+.profil-input-2::placeholder,.profil-input-2-long::placeholder{
+    color: var(--color-primary-light);
+}
+.profil-textarea{
+    border: 2px solid var(--color-primary-light);
+    height: max-content;
+    min-height: 200px;
+    width: 70%;
+    margin-bottom: 2em;
+    outline: none;
+    color: var(--color-primary-light);
+    initial-letter: 3;
+    padding: 1em;
+    z-index: -1;
+    @media screen and (max-width:850px){
+        margin-top: 6em;
+        width: 100%;
+    }
+}
+.profil-textarea::first-letter{
+    font-size: 4em;
+    line-height: 1em;
+}
+
+.profil-public-url{
+    text-align: center;
+    width: 100%;
+    color: var(--color-primary-light);
+}
+.pofil-publier{
+    margin: 2em;
+    text-align: center;
+    background-color: var(--color-primary-light);
+    color: #fff;
+    padding: 1em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.previewadmin{
+    position: relative;
+    margin-right: 2em;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    min-height: 150px;
+    min-width: 130px;
+    height: 210px;
+    padding: 1em;
+    color: var(--color-primary-light);
+    margin-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    input[type="file"] {
+        display: none;
+    }
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 6px 12px;
+        cursor: pointer;
+        div{
+            margin-top: 0.5em;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+}

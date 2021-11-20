@@ -1,0 +1,289 @@
+.header{
+    background-color: #fff;
+    width: 100%;
+    height : 40px;
+    align-items: center;
+    color:var(--color-primary-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 200000;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    @media screen and (max-width:1075px){
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    @media screen and (max-width:550px){
+        height: 50px;
+ 
+    }
+    .user_img{
+        position: relative;
+        border-radius: 30px;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+    }
+    .user_img:hover{
+        background-color: transparent;
+    }
+    .h_logo{
+        max-height: 40px;
+        max-width: max-content;
+        outline: none;
+        @media screen and (max-width:1075px){
+            height: 50px;
+        }
+        
+    }
+    .h_logo:hover{
+        cursor: pointer;
+        background-color: #fff;
+    }
+    .menu{
+        height: 100%;
+        @media screen and (max-width:1075px){
+            width: 100%;
+        }
+    }
+    .menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        justify-content: center;
+        background-color: #fff;
+
+        @media screen and (max-width:1075px){
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+    .menu ul li {
+        display: block;
+        position: relative;
+        float: left;
+        color: #999;
+        font-size: initial;
+        @media screen and (max-width:1075px){
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .menu .droite {
+        float: right;
+    }
+    .menu li ul {
+        display: none;
+        min-width: 150px;
+        width: max-content;
+        font-size: initial;
+        color:#000;
+        background-color: #ccc;
+        @media screen and (max-width:1075px){
+            background-color: #fff;
+        }
+    }
+
+    .menu ul li a {   
+        text-decoration: none;
+        height:100%;
+        display: flex;
+        align-items: center;
+        min-width: max-content;
+        text-align: center;
+        padding: 1em;
+        height: 40px;
+        font-size: initial;
+        color:var(--color-primary-light);
+        
+        @media screen and (max-width:550px){
+            height: 50px;
+        }
+        
+    
+    }
+    .locate{
+       // border-bottom: 2px solid rgb(84, 122, 247);        
+    }
+    .menu ul .a_logo a{
+        padding:0;
+        margin:0;
+    }
+    .menu ul li a:hover {
+        background: #555;
+    }
+   
+    .menu li:hover ul {
+        /* Ici l’affichage du sous-menu */
+        display: block;
+        position: absolute;
+        //border: 1px solid #555;
+        border-top: none;
+        width: max-content;
+       // background-color: #555;
+        @media screen and (max-width:1075px){
+            display: flex;
+            position: relative;
+            padding-left: 30px;
+        }
+    }
+    .menu li:hover li {
+        float: none;
+        color: #fff;
+    }
+  
+    .menu li:hover li a:hover {
+        color: #fff;
+
+    }​​
+    
+    .user{
+        display: flex;
+        padding-right: 0.5em;
+    }
+    .icon{
+        width: 20px;
+    }
+    .notification_z {
+        position: relative;
+        max-width: 40px;
+        top: 10%;
+        right: 10%;
+        padding-right: 1em;
+        svg{
+            width: 50px;
+        }
+    }
+    .notification_z span{
+        font-size: initial;
+        font-weight: initial;
+        padding: 0.5em;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: -5px;
+        left: 31px;
+        border-radius: 17px;
+        color: #fff;
+        background-color: rgb(235, 15, 15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .user_name_z{
+        padding-right:1em;
+        padding-left: 0.5em;
+    }
+    
+
+    .user ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        max-height: 100%;
+    }
+    
+    .user ul li a{
+        text-decoration: none;
+        cursor : pointer;
+        min-width: min-content;
+        width: 100%;
+    }
+    .user ul li a:hover{
+        color: #fff;
+    }
+    .user ul li {
+        position: relative;
+        height: 40px;
+
+        @media screen and (max-width:550px){
+           height: 50px;
+        }
+
+    }
+    .user li ul {
+        position: relative;
+        right:calc(100% - 70px) ;
+        display: none;
+        z-index: 10;
+        color: var(--color-primary-light);
+        background-color: #ccc;
+        @media screen and (max-width:1075px){
+            background-color: #fff;
+        }
+        
+    }
+    .menu-menu{
+        display: none;
+    }
+    
+    .user li ul li{ 
+        min-height: 30px;
+        cursor: pointer;
+        height: 40px;
+        @media screen and (max-width:550px){
+            height: 50px;
+         }
+    }
+    
+    .disconnect{
+        height: 100%;
+        display: flex;
+        display: flex;
+        align-items: center;
+    }
+
+    .user-menu-info{
+        position: absolute;
+        right: 0;
+        height: 100%;
+        display: flex;
+        width: max-content;
+    }
+    .first{
+        max-width: max-content;
+        margin-right: 0.5em;
+    }
+    .first:hover{
+        background-color: #fff;
+    }
+    .menu_btn{
+        font-size: 2em;
+        margin-right: 0.5em;
+        cursor: pointer;
+        @media screen and (max-width:550px){
+            font-size: 2.5em;
+        }
+    }
+    
+    .bottom{
+        z-index: 1;
+        background-color: var(--color-primary-light);
+        width: 100%;
+        height: 200px;
+    }
+    .last{
+       // border-bottom: 1px solid var(--color-primary-light);
+       // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+       background-color: #ccc;
+       border-bottom: 1px dotted #555;
+       margin: 0;
+
+    }
+
+    svg{
+        width: 15px;
+    }
+
+}

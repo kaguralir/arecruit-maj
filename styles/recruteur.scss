@@ -1,0 +1,297 @@
+.recruteur{
+    max-height: 100vh;
+    overflow-y: scroll;
+    .body{
+        position: relative;
+        .mbXl{
+            margin-bottom: 300px;
+            @media screen and (max-width:750px){
+                margin-bottom: 350px;
+            }
+
+        }
+        
+       
+        .recutor-left{
+            width: 20%;
+            padding: 2em;
+            color: var(--color-primary-light);
+            overflow-y: scroll;
+            max-height:100%;
+            @media screen and (max-width:850px){
+                display: none;
+            }
+
+            span{
+                font-weight: 900;
+            }
+            .recrutor-consultant{
+                display: flex;
+                flex-direction: column;
+                margin: 1em auto;
+                .recrutor-consultant-img{
+                    margin: 0 auto;
+                }
+            }
+            .recrutor-help{
+                margin: 1em auto;
+            }
+       }
+    //    .recutor-left::-webkit-scrollbar{
+    //        display: none;
+    //    }
+
+        .recrutor-right{
+            width: 80%;
+            @media screen and (max-width:850px){
+               width: 100%;
+            }
+
+            .company_info{
+                padding: 2em;
+                display: flex;
+                .company_logo{
+                    width: 20%;
+                    height: 200px;
+                    padding: 2em;
+                    border: 5px solid var(--color-primary-light);
+                    background-color: #999;
+                }
+                .company{
+                    padding: 1em;
+                    color: var(--color-primary-light);
+                    border-top: 1px solid var(--color-primary-light);
+                    border-bottom: 1px solid var(--color-primary-light);
+                    border-right: 1px solid var(--color-primary-light);
+                    min-width: 80%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    span{
+                        font-weight: 900;
+
+                    }
+                    div{
+                        margin-bottom: 0.5em;
+                    }
+                }
+            }
+
+        }
+
+    }
+   
+
+    .show_hide_layout{
+        max-width: 95%;
+        margin: 2em auto;
+        background-color: #fff;
+        box-shadow: 0px 1px 2px #ccc;
+        padding: 5px;
+        padding-left: var(--font-M);
+        padding-right: var(--font-M);
+        min-height: 2em;
+        border-radius: 3px;
+    }
+    .wrap_list_layout{
+        max-width: 95%;
+        margin: 2em auto;
+        background-color: #fff;
+        box-shadow: 0px 1px 2px #ccc;
+        padding: 5px;
+        padding-left: var(--font-M);
+        padding-right: var(--font-M);
+        min-height: 2em;
+        border-radius: 3px;
+    }
+
+    .underline{
+        border-top: 1px solid #ccc;
+    }
+    .show_hide_layout form{
+        width: 100%;
+    }
+    .show_hide_layout .right{
+        width: 20%;
+        background-color: red;
+        max-height: 40px;
+    }
+
+    .head{
+        min-height: 30px;
+        cursor: pointer;
+    }
+
+    .bottom5{
+        margin-bottom: 5px;
+    }
+    .register_todo_container{        
+        @media screen and (max-width:500px){
+            display: flex;
+            flex-direction: column;
+            div{
+                height: max-content;
+            
+            }
+            
+        }
+    }
+    .register_todo {
+        width: 100%;
+        height: 40px;
+        div{
+            @media screen and (max-width:500px){
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 5px;
+
+            }
+        }
+        label{
+            text-align: left;
+            align-items: flex-start;
+            @media screen and (max-width:500px){
+                margin-bottom: 3px;
+            }
+        }
+    }
+
+   
+
+    .register_todo input,.form_select{
+        outline: none;
+        border: none;
+        min-height: 25px;
+        background-color: rgba(204, 204, 204, 0.357);
+        margin-left: var(--font-M);
+        padding-left: var(--font-M);
+        padding-right: var(--font-M);
+        width: 20em;
+       
+    }
+
+    .file{
+        background-color: none  ;
+        align-items: flex-start;
+        margin-bottom: 2em;
+        @media screen and (max-width:500px){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .register_todo .file_input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 40em;
+    }
+    .register_todo .file_preview{
+        width: 20em;
+        max-width: 40em;
+    }
+
+    .new_demande{
+        @media screen and (max-width:500px){
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .calendrier{
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .demandes_head{         
+        font-weight: 900;
+        color: var(--color-primary-light);
+        font-size: var(--font-M);
+    }
+
+    .demande{
+        width: 100%;
+        max-width: 250px;
+        min-width: 200px;
+        min-height: 100px;
+        margin: 1em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 1em;
+        text-align: left;
+    }
+
+    .demandes_link{
+        flex-wrap: wrap;
+    }
+
+    .more {
+        margin-left: var(--font-M);
+        cursor: pointer;
+    }
+
+    .more a{
+        text-decoration: none;
+
+    }
+
+    .more_btn{
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        background-color: var(--color-primary-light);
+        color: #fff;
+        font-weight: 900;
+    }
+
+    .demande_right{
+        padding-left: 0.5em;
+        margin-left: 0.5em;
+        cursor: pointer;
+        border-left: 1px dotted #ccc;
+        max-width: 20px;
+    }
+    .demande_left{
+        width: calc(100% - 30px)       
+    }
+
+    .conseils{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2em;
+      
+        span{
+            color: var(--color-primary-light);
+            margin-bottom: 1em;
+        }
+        div{
+            display: flex;
+        }
+    }
+
+    .btn{
+        margin: 1em; 
+        min-width: 100px;
+        background-color: var(--color-primary-light);
+        height: 40px;
+        color: #fff;
+    }
+
+    .white{
+        color: #fff;
+    }
+
+    .p2em{
+        padding: 2em;
+    }
+    .demandes_link{
+        justify-content: center;
+    }
+
+    
+   
+}
