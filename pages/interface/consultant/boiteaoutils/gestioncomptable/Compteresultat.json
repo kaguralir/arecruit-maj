@@ -1,0 +1,89 @@
+[
+    {
+      "benefits": 13021,
+      "incomecharge": 520,
+      "taxes":200,
+      "month": 1,
+      "year": 2021
+    },
+    {
+        "benefits": 13022,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 2,
+        "year": 2021
+      },
+      {
+        "benefits": 13023,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 3,
+        "year": 2021
+      },
+      {
+        "benefits": 13024,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 4,
+        "year": 2021
+      },
+      {
+        "benefits": 13025,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 5,
+        "year": 2021
+      },
+      {
+        "benefits": 13026,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 6,
+        "year": 2021
+      },
+      {
+        "benefits": 13027,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 7,
+        "year": 2021
+      },
+      {
+        "benefits": 13028,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 8,
+        "year": 2021
+      },
+      {
+        "benefits": 13029,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 9,
+        "year": 2021
+      },
+
+      {
+        "benefits": 13030,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 10,
+        "year": 2021
+      },
+      {
+        "benefits": 13031,
+        "income-charge": 520,
+        "taxes":200,
+        "month": 11,
+        "year": 2021
+      },
+      {
+        "benefits": 13032,
+        "incomecharge": 520,
+        "taxes":200,
+        "month": 12,
+        "year": 2021
+      }
+   
+  ]
+  

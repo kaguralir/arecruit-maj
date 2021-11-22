@@ -14,10 +14,17 @@ import router from 'next/router'
 
 
 export default function index() {
-    const [company_info, setCompanyInfo] = useState([])
-    const [job, setJob] = useState([])
-    const [consultant, setConsultant] = useState([])
-    const [facture, setFacture] = useState([])
+    const [company_info, setCompanyInfo] = useState([]);
+    const [job, setJob] = useState([]);
+    const [facture, setFacture] = useState([]);
+
+    const [description, setDescription] = useState("");
+    const [description_service, setDescriptionService] = useState("");
+    const [date_debut, setDateDbt] = useState("")
+    const [date_fin, setDateFin] = useState("");
+    const [heures, setHeures] = useState(0);
+    const [taux, setTaux] = useState(0);
+    const [total, setTotal] = useState(0);
 
 
     useEffect(() => {
@@ -34,29 +41,54 @@ export default function index() {
             id: router.query.id
         }).then((reponse) => {
             setJob(reponse.data)
+            console.log("job data is", reponse.data);
         })
-
-
-        // axios.put(`http://localhost:3080/updatejob`, {
-        //   id: router.query.id
-        // }).then((reponse) => {
-        //   setJob(reponse.data)
-        // })
-
-
 
     }, [])
 
+
+    const addFacture = () => {
+        try {
+            axios.post(`${api}/createFacture`, {
+                company_id: company_info.company_id,
+                consultant_id: company_info.consultant_id,
+                date_debut: date_debut,
+                date_fin: date_fin,
+                taux: taux,
+                heures: heures,
+                total: total,
+                description: description,
+                description_service: description_service
+            }).then(() => {
+                setFacture([
+                    ...facture,
+                    {
+                        date_debut: date_debut,
+                        date_fin: date_fin,
+                        taux: taux,
+                        heures: heures,
+                        total: total,
+                        description: description,
+                        description_service: description_service
+                    },
+                ]);
+            });
+        }
+        catch (err) {
+            console.log("err is", err);
+        }
+    };
     const validationSchema = Yup.object().shape({
-        title: Yup.string()
-            .required('Title is required'),
+
         firstName: Yup.string()
             .required('First Name is required'),
         lastName: Yup.string()
             .required('Last name is required'),
         dob: Yup.string()
-            .required('Date of Birth is required')
-            .matches(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/, 'Date of Birth must be a valid date in the format YYYY-MM-DD'),
+            .required('Veuillez indiquer la date de début.'),
+        dob2: Yup.string()
+            .required('Veuillez indiquer la date de fin.'),
+        // .matches(/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/, 'Date of Birth must be a valid date in the format YYYY-MM-DD'),
         email: Yup.string()
             .required('Email is required')
             .email('Email is invalid'),
@@ -67,7 +99,7 @@ export default function index() {
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Confirm Password is required'),
         acceptTerms: Yup.bool()
-            .oneOf([true], 'Accept Ts & Cs is required')
+            .oneOf([true], 'Veuillez accepter les conditions.')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -103,56 +135,85 @@ export default function index() {
                         <h5 className="card-header">Création d'un devis</h5>
                         <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
+
                                 <div className="form-row">
                                     <div className="form-group col">
-                                        <label> A l'attention de l'entreprise</label>
-                                        <p></p>
+                                        <label> A l'attention de l'entreprise :</label>
+                                        <p>{company_info.company_name}</p>
                                         <div className="invalid-feedback">{errors.title?.message}</div>
                                     </div>
                                     <div className="form-group col-5">
-                                        <label>Candidat attribué par le consultant :</label>
-                                        <p></p>
+                                        <label>Nom du consultant :</label>
+                                        <p>{company_info.user_firstname}</p>
                                     </div>
                                     <div className="form-group col-5">
-                                        <label>Numéro de l'entreprise : </label>
-                                        <p></p>
+                                        <label>Numéro de contact de l'entreprise : </label>
+                                        <p>{company_info.company_phone_number}</p>
                                     </div>
                                     <div className="form-group col">
-                                        <label>Email de l'entreprise : </label>
-                                        <p></p>
+                                        <label>Addresse de l'entreprise : </label>
+                                        <p> {company_info.company_address}</p>
                                     </div>
                                     <div className="form-group col-5">
-                                        <label>Addresse de l'entreprise : </label>
-                                        <p></p>
+                                        <label>Code postal : </label>
+                                        <p>{company_info.company_zip_code}</p>
                                     </div>
                                 </div>
+                                <div className="form-group col">
+                                    <label>Description du service :</label>
+                                    <p onChange={(event) => {
+                                        setDescriptionService(event.target.value);
+                                    }}>{job.job_title}</p>
+                                </div>
+
                                 <div className="form-row">
                                     <div className="form-group col">
                                         <label>Date de début :</label>
-                                        <input name="dob" type="date" {...register('dob')} className={`form-control ${errors.dob ? 'is-invalid' : ''}`} />
+                                        <input name="dob" type="date" {...register('dob')} className={`form-control ${errors.dob ? 'is-invalid' : ''}`} onChange={(event) => {
+                                            setDateDbt(event.target.value);
+                                        }} />
                                         <div className="invalid-feedback">{errors.dob?.message}</div>
                                     </div>
                                     <div className="form-group col">
                                         <label>Date de fin :</label>
-                                        <input name="dob" type="date" {...register('dob')} className={`form-control ${errors.dob ? 'is-invalid' : ''}`} />
-                                        <div className="invalid-feedback">{errors.dob?.message}</div>
+                                        <input name="dob" type="date" {...register('dob2')} className={`form-control ${errors.dob2 ? 'is-invalid' : ''}`} onChange={(event) => {
+                                            setDateFin(event.target.value);
+                                        }} />
+                                        <div className="invalid-feedback">{errors.dob2?.message}</div>
                                     </div>
                                     <div className="form-group col">
+                                        <label>Description :</label>
+                                        <input name="text" type="text" onChange={(event) => {
+                                            setDescription(event.target.value);
+                                        }} />
+
+                                    </div>
+
+                                    <div className="form-group col">
                                         <label>Heures/jour :</label>
-                                        <input name="email" type="text" {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
-                                        <div className="invalid-feedback">{errors.email?.message}</div>
+                                        <input name="heures" type="number"
+                                            onChange={(event) => {
+                                                setHeures(event.target.value);
+                                            }} />
+
+                                    </div>
+                                    <div className="form-group col">
+                                        <label>Taux:</label>
+                                        <input name="heures" type="number"
+                                            onChange={(event) => {
+                                                setTaux(event.target.value);
+                                            }} />
+
                                     </div>
                                 </div>
                                 <div className="form-row">
-                                    <div className="form-group col">
-                                        <label>Taux:</label>
-                                        <input name="password" type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                                        <div className="invalid-feedback">{errors.password?.message}</div>
-                                    </div>
+
                                     <div className="form-group col">
                                         <label>Total :</label>
-                                        <input name="confirmPassword" type="password" {...register('confirmPassword')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
-                                        <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
+                                        <input name="text" type="number" step="0.01" {...register('nombre')} className={`form-control ${errors.nombre ? 'is-invalid' : ''}`} onChange={(event) => {
+                                            setTotal(event.target.value);
+                                        }} />
+                                        <div className="invalid-feedback">{errors.nombre?.message}</div>
                                     </div>
                                 </div>
                                 <div className="form-group form-check">
@@ -161,7 +222,7 @@ export default function index() {
                                     <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
                                 </div>
                                 <div className="form-group">
-                                    <button type="submit" className="btn btn-primary mr-1">Envoyer</button>
+                                    <button type="submit" onClick={addFacture} className="btn btn-primary mr-1">Envoyer</button>
                                     <button type="button" onClick={() => reset()} className="btn btn-secondary">Recommencer</button>
                                 </div>
                             </form>
