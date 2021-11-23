@@ -1,0 +1,101 @@
+@import "config";
+@import "content"; // Hero part of the card
+@import "price-box"; // Description of the subscription plan
+@import "buttons"; // Buttons at the bottom
+@import "attribution";
+
+// :root {
+//   box-sizing: border-box;
+//   font-size: 100%;
+// }
+
+// body {
+//   font-family: "Red Hat Display", ns-serif;
+//   background-color: $pale-blue;
+//   height: 100vh;
+//   width: 100vw;
+//   position: relative;
+//   @include flex(column);
+//   justify-content: center;
+//   align-items: center;
+
+//   &::before {
+//     content: ""; // ::before and ::after both require content
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     background: url(https://images.unsplash.com/photo-1504711331083-9c895941bf81?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80)
+//       no-repeat top;
+//     width: 100vw;
+//     height: 100%;
+//     z-index: -1;
+
+//     @media (min-width: 376px) {
+//       background: url(https://images.unsplash.com/photo-1504711331083-9c895941bf81?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80)
+//         no-repeat top/100%;
+//     }
+//   }
+// }
+
+#card {
+  background-color: $white;
+  width: clamp(50.375rem, 33vw, 25.375rem);
+  overflow: hidden;
+  @include round-border;
+  /*   margin: 10%; */
+  margin: 2%;
+
+  #hero {
+    width: 100%;
+  }
+}
+
+/* .cvCards-container {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+.cvCards-container > #card {
+  flex: 20%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+  /*demo*/
+
+  /*   box-shadow: 0 0 0 1px black;
+  margin-bottom: 10px; */
+}
+$breakpoint-tablet: 900px;
+@media (max-width: $breakpoint-tablet) {
+  .cvCards-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #card {
+    width: clamp(20.375rem, 33vw, 25.375rem);
+  }
+}
+
+.link-cv {
+  color: white;
+}
+
+.cvdetail-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cvtheque-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none !important;
+}

@@ -206,6 +206,8 @@ const allfacture = ({ factures }) => {
 
 
     return (
+
+
         <div>
             <Head>
                 <title>A recruit | Facture Thèque</title>
@@ -238,16 +240,15 @@ const allfacture = ({ factures }) => {
                                                     Travail recherché: {val.description}
                                                 </div>
 
-                                                <div id="info-box">
-
-                                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/gestioncomptable/factures/" + val.facture_id} className="link-cv">Voir la facture</Link></button>
-                                                </div>
+                                                <Link href={{ pathname: "/interface/consultant/boiteaoutils/gestioncomptable/factures/factureDetail", query: { id: val.facture_id, } }}>
+                                                    <a>Gérer</a>
+                                                </Link>
                                             </div>
                                         </div>
 
                                     </div>)
                             }
-                            else if (val.user_name.toLowerCase().includes(searchTerm.toLowerCase()) || val.user_firstname.toLowerCase().includes(searchTerm.toLowerCase()) || val.searched_job1.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            else if (val.description.toLowerCase().includes(searchTerm.toLowerCase()) || val.user_firstname.toLowerCase().includes(searchTerm.toLowerCase()) || val.searched_job1.toLowerCase().includes(searchTerm.toLowerCase())) {
                                 return (
                                     <div className="cvCards-container">
 
@@ -264,10 +265,9 @@ const allfacture = ({ factures }) => {
                                                 </div>
 
 
-                                                <div id="info-box">
-
-                                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/gestioncomptable/factures/" + val.facture_id} className="link-cv">Voir la facture</Link></button>
-                                                </div>
+                                                <Link href={{ pathname: "/interface/consultant/boiteaoutils/gestioncomptable/factures/factureDetail", query: { id: val.facture_id, } }}>
+                                                    <a>Gérer</a>
+                                                </Link>
                                             </div>
                                         </div>
 
@@ -289,11 +289,9 @@ const allfacture = ({ factures }) => {
                                                 Travail recherché: {val.description}
                                             </div>
 
-
-                                            <div id="info-box">
-
-                                                <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/gestioncomptable/factures/" + val.facture_id} className="link-cv">Voir le CV en détail</Link></button>
-                                            </div>
+                                            <Link href={{ pathname: "/interface/consultant/boiteaoutils/gestioncomptable/factures/factureDetail", query: { id: val.facture_id, } }}>
+                                                <a>Gérer</a>
+                                            </Link>
                                         </div>
                                     </div>
 
@@ -310,22 +308,3 @@ const allfacture = ({ factures }) => {
 
 export default allfacture;
 
-export const getServerSideProps = async ({ req }) => {
-
-    const user_cookie = cookie?.parse(req ? req.headers.cookie || "" : document.cookie)
-    const user = jwt_decode(JSON.stringify(user_cookie))
-    const response = await axios.get(`${api}/getFacturePerConsultant/${user.user_id}`);
-
-    /*     console.log("response data is", response.data);
-     */
-    return {
-        props: {
-            factures: response.data
-
-        }
-    }
-}
-
-export async function getInitialProps({ query }) {
-    return { query }
-}

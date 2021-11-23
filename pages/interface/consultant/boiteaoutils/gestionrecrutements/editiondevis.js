@@ -50,15 +50,16 @@ export default function index() {
     const addFacture = () => {
         try {
             axios.post(`${api}/createFacture`, {
-                company_id: company_info.company_id,
-                consultant_id: company_info.consultant_id,
+
                 date_debut: date_debut,
                 date_fin: date_fin,
                 taux: taux,
                 heures: heures,
                 total: total,
                 description: description,
-                description_service: job.job_title
+                description_service: job.job_title,
+                facture_company_id: company_info.company_id,
+                facture_consultant_id: company_info.consultant_id
             }).then(() => {
                 setFacture([
                     ...facture,

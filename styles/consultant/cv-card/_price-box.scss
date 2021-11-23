@@ -1,0 +1,30 @@
+#info-box {
+  background-color: $very-pale-blue;
+  padding: 1rem;
+  @include round-border;
+  @include flex(row);
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  width: 100%; //rajouter apres MAJ page cvtheque
+  #note {
+    flex: 0 1 3rem;
+  }
+
+  #info-desc {
+    align-self: center;
+    flex: 1 1 42%;
+    text-align: left;
+    padding-left: 1rem;
+
+    #plan-title {
+      @include font-size-weight(clamp(0.8125rem, 1.75vw, 0.875rem), 700);
+    }
+
+    #sub-title {
+      color: $desat-blue;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+  }
+}
