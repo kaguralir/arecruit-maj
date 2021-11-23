@@ -6,8 +6,12 @@ import Link from 'next/link'
 import Consultant_layout from '../../../../../../components/layouts/consultant_layout'
 import cookie from 'cookie'
 import jwt_decode from 'jwt-decode'
+import axios from 'axios'
+import { api } from '../../../../../api/api'
+import router, { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie'
 
-export default function index() {
+/* export default function index() {
 
     const [factures, setOffers] = useState([])
 
@@ -161,28 +165,167 @@ export default function index() {
 
         </>
     )
-}
-export async function getServerSideProps({ req }) {
+} */
 
-    const user_cookie = cookie.parse(req ? req.headers.cookie || "" : document.cookie)
 
-    if (user_cookie.me) {
-        let data = []
 
-        //console.log(data)
+const allfacture = ({ factures }) => {
+    const router = useRouter()
+    const [cookie, setCookie] = useCookies(["me"])
+    const [facture, setFacture] = useState([])
+    const [searchTerm, setSearchTerm] = useState("")
 
-        return {
-            props: {
-                data
+
+
+    const [user, setUser] = useState("");
+
+    useEffect(() => {
+        let data = cookie
+        if (data.me) {
+
+            let user = jwt_decode(JSON.stringify(data))
+            console.log("user is", user);
+            console.log("user id is", user.user_id);
+            try {
+                axios.get(`${api}/getFacturePerConsultant/${user.user_id}`).then((reponse) => {
+                    setFacture(reponse.data);
+                    console.log("data respons is", reponse.data);
+
+                })
+
+            }
+            catch (err) {
+                console.log("err is", err);
             }
         }
-    }
+    }, [user.user_id])
 
+
+
+
+
+
+    return (
+        <div>
+            <Head>
+                <title>A recruit | Facture Thèque</title>
+            </Head>
+
+            <Consultant_layout
+                position="factures"
+            >
+                <div className="cvtheque-container">
+                    <div>
+                        <h1>Liste de facture</h1>
+                    </div>
+
+                    <div className="App">
+                        <input type="text" placeholder="Search..." onChange={(event) => { setSearchTerm(event.target.value) }} />
+                        {facture.filter((val) => {
+                            if (searchTerm == '') {
+                                return (
+                                    <div className="cvCards-container">
+
+                                        <div id="card">
+                                            <div id="content">
+                                                <div id="title">
+                                                    Candidat nom: {val.company_id}
+                                                </div>
+                                                <div id="title">
+                                                    Candidat prénom: {val.consultant_id}
+                                                </div>
+                                                <div id="desc">
+                                                    Travail recherché: {val.description}
+                                                </div>
+
+                                                <div id="info-box">
+
+                                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/gestioncomptable/factures/" + val.facture_id} className="link-cv">Voir la facture</Link></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>)
+                            }
+                            else if (val.user_name.toLowerCase().includes(searchTerm.toLowerCase()) || val.user_firstname.toLowerCase().includes(searchTerm.toLowerCase()) || val.searched_job1.toLowerCase().includes(searchTerm.toLowerCase())) {
+                                return (
+                                    <div className="cvCards-container">
+
+                                        <div id="card">
+                                            <div id="content">
+                                                <div id="title">
+                                                    Candidat nom: {val.company_id}
+                                                </div>
+                                                <div id="title">
+                                                    Candidat prénom: {val.consultant_id}
+                                                </div>
+                                                <div id="desc">
+                                                    Travail recherché: {val.description}
+                                                </div>
+
+
+                                                <div id="info-box">
+
+                                                    <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/gestioncomptable/factures/" + val.facture_id} className="link-cv">Voir la facture</Link></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>)
+                            }
+                        }).map((val, key) => {
+                            return (
+                                <div className="cvCards-container">
+
+                                    <div id="card">
+                                        <div id="content">
+                                            <div id="title">
+                                                Candidat nom: {val.company_id}
+                                            </div>
+                                            <div id="title">
+                                                Candidat prénom: {val.consultant_id}
+                                            </div>
+                                            <div id="desc">
+                                                Travail recherché: {val.description}
+                                            </div>
+
+
+                                            <div id="info-box">
+
+                                                <button className="btn--pay"><Link href={"/interface/consultant/boiteaoutils/gestioncomptable/factures/" + val.facture_id} className="link-cv">Voir le CV en détail</Link></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            );
+                        })}
+
+                    </div>
+                </div>
+            </Consultant_layout>
+        </div >
+    )
+}
+
+export default allfacture;
+
+export const getServerSideProps = async ({ req }) => {
+
+    const user_cookie = cookie?.parse(req ? req.headers.cookie || "" : document.cookie)
+    const user = jwt_decode(JSON.stringify(user_cookie))
+    const response = await axios.get(`${api}/getFacturePerConsultant/${user.user_id}`);
+
+    /*     console.log("response data is", response.data);
+     */
     return {
-        redirect: {
-            permanent: false,
-            destination: "/auth/login?dest=consultant/boiteaoutils",
-        },
-        props: { message: "redirect" },
+        props: {
+            factures: response.data
+
+        }
     }
+}
+
+export async function getInitialProps({ query }) {
+    return { query }
 }

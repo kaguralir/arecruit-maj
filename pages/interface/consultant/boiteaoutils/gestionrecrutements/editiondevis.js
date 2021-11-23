@@ -58,7 +58,7 @@ export default function index() {
                 heures: heures,
                 total: total,
                 description: description,
-                description_service: description_service
+                description_service: job.job_title
             }).then(() => {
                 setFacture([
                     ...facture,
